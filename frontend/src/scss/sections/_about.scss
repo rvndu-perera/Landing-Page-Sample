@@ -1,0 +1,143 @@
+@use '../variables' as *;
+
+.about-section {
+  display: grid;
+  width: min(100% - 2 * clamp(24px, 6vw, 96px), 1440px);
+  min-height: 620px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(44px, 8vw, 128px);
+  margin-inline: auto;
+  padding-block: clamp(76px, 10vw, 144px);
+}
+
+.about-copy {
+  max-width: 510px;
+}
+
+.section-eyebrow {
+  margin: 0 0 12px;
+  color: #4b9879;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.about-copy h2 {
+  margin: 0 0 20px;
+  color: #252723;
+  font-family: $font-display;
+  font-size: clamp(38px, 4.15vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.about-copy p:not(.section-eyebrow) {
+  margin: 0;
+  color: #686b66;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.8;
+}
+
+.about-copy .about-detail {
+  margin-top: 16px !important;
+}
+
+.about-gallery {
+  display: grid;
+  min-height: 340px;
+  grid-template-columns: 1.03fr 1fr;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+  }
+
+  .about-gallery-main {
+    grid-row: 1 / 4;
+    object-position: center;
+  }
+
+  img:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    object-position: center 58%;
+  }
+
+  img:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    object-position: center 52%;
+  }
+
+  img:nth-child(4) {
+    grid-column: 2;
+    grid-row: 3;
+    object-position: center 52%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .about-gallery {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-section {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .about-gallery {
+    min-height: 320px;
+  }
+
+  .about-copy h2 {
+    font-size: clamp(34px, 4.6vw, 44px);
+  }
+}
+
+@media (max-width: 680px) {
+  .about-section {
+    width: calc(100% - 44px);
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 76px 88px;
+  }
+
+  .about-copy {
+    max-width: 560px;
+  }
+
+  .about-copy h2 {
+    max-width: 460px;
+    font-size: clamp(38px, 9vw, 50px);
+  }
+
+  .about-copy p:not(.section-eyebrow) {
+    font-size: 13px;
+  }
+
+  .about-gallery {
+    min-height: clamp(280px, 78vw, 340px);
+    gap: 6px;
+  }
+}
+
+@media (max-width: 390px) {
+  .about-section {
+    width: calc(100% - 36px);
+  }
+
+  .about-gallery {
+    min-height: 270px;
+  }
+}
