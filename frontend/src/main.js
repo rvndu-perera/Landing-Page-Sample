@@ -5,6 +5,12 @@ import aboutCourtyard from './assets/images/about/about3.jpg'
 import aboutPool from './assets/images/about/about2.jpg'
 import aboutBedroom from './assets/images/about/about4.jpg'
 import aboutKitchen from './assets/images/about/about1.jpg'
+import site1 from './assets/images/sites/site1.jpg'
+import site2 from './assets/images/sites/site2.jpg'
+import site3 from './assets/images/sites/site3.jpg'
+import site4 from './assets/images/sites/site4.jpg'
+import site5 from './assets/images/sites/site5.jpg'
+import site6 from './assets/images/sites/site6.jpg'
 
 document.querySelector('#app').innerHTML = `
   <main>
@@ -51,6 +57,101 @@ document.querySelector('#app').innerHTML = `
         <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
         <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
       </div>
+    </section>
+
+    <section class="sites-section" id="branches" aria-labelledby="sites-title">
+      <div class="sites-inner">
+
+        <div class="sites-header">
+          <div class="sites-header-left">
+            <p class="section-eyebrow">Our Sites</p>
+          </div>
+          <h2 class="sites-heading" id="sites-title">Explore Our<br>Sites</h2>
+        </div>
+
+        <div class="sites-grid">
+
+          <!-- Card 1 — tall left (spans rows 1–2) -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site1}" alt="Shirohana Kandy — a lakeside eco villa with private pool amid lush jungle" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Kandy</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site2}" alt="Shirohana Kandy — garden plunge tub with mountain lake view at dusk" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Kandy</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site3}" alt="Shirohana Haputale — hilltop villa with infinity pool overlooking misty valleys" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Haputale</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Haputale">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site4}" alt="Shirohana Kandy — traditional courtyard villa with carved columns" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Kandy</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site5}" alt="Shirohana Kalawewa — jungle villa with Sigiriya Rock Fortress views" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Kalawewa</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kalawewa">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 6 — full-width panoramic strip -->
+          <article class="site-card">
+            <img class="site-card-img" src="${site6}" alt="Shirohana Negombo — open villa kitchen with tropical garden and pool" />
+            <div class="site-card-overlay" aria-hidden="true"></div>
+            <div class="site-card-footer">
+              <span class="site-card-location">Negombo</span>
+              <a class="site-card-book" href="#booking" aria-label="Book a villa at Negombo">
+                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /.sites-grid -->
+
+        <div class="sites-load-more">
+          <button class="load-more-btn" type="button" id="sites-load-more" aria-label="Load more sites">
+            Load more <span class="load-more-icon" aria-hidden="true">↓</span>
+          </button>
+        </div>
+
+      </div><!-- /.sites-inner -->
     </section>
   </main>
 `
