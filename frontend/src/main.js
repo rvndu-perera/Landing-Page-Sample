@@ -11,6 +11,7 @@ import site3 from './assets/images/sites/site3.jpg'
 import site4 from './assets/images/sites/site4.jpg'
 import site5 from './assets/images/sites/site5.jpg'
 import site6 from './assets/images/sites/site6.jpg'
+import offersPackages from './assets/images/offers/packages.png'
 
 document.querySelector('#app').innerHTML = `
   <main>
@@ -152,6 +153,42 @@ document.querySelector('#app').innerHTML = `
         </div>
 
       </div><!-- /.sites-inner -->
+    </section>
+
+    <section class="offers-section" id="offers" aria-labelledby="offers-title">
+      <div class="offers-inner">
+
+        <!-- Left: Copy -->
+        <div class="offers-copy">
+          <p class="section-eyebrow">Our Offers</p>
+          <h2 id="offers-title">Offers and Packages</h2>
+          <p class="offers-description">From scuba diving in Kalpitiya to Hiking in Haputale, our curated packages invite you to discover and fall in love with the beauty of Sri Lanka.</p>
+
+          <div class="offers-activities" role="list">
+            <div class="offers-activity" role="listitem">Wild Life Safaris</div>
+            <div class="offers-activity" role="listitem">Outdoor Camping</div>
+            <div class="offers-activity" role="listitem">Rafting Adventures</div>
+            <div class="offers-activity" role="listitem">Scuba Diving</div>
+            <div class="offers-activity" role="listitem">ATV Rides</div>
+            <div class="offers-activity" role="listitem">River Boat Rides</div>
+            <div class="offers-activity" role="listitem">Jet Sky Rides</div>
+            <div class="offers-activity" role="listitem">Zip Lines</div>
+          </div>
+
+          <div class="offers-cta">
+            <a class="offers-link-plain" href="#booking">Quick Booking</a>
+            <a class="offers-link-outline" href="#offers-all" aria-label="Explore all offers and packages">
+              Explore More <span class="offers-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Image collage -->
+        <div class="offers-image">
+          <img src="${offersPackages}" alt="A collage of Sri Lanka adventure packages — elephant safari, white water rafting, ATV riding, and outdoor camping" />
+        </div>
+
+      </div>
     </section>
   </main>
 `
