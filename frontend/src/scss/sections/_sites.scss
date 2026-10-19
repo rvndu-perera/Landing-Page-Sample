@@ -136,19 +136,20 @@
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 32%,
-    rgba(0, 0, 0, 0.6) 58%,
-    rgba(0, 0, 0, 0.15) 82%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.15) 80%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 32%,
-    rgba(0, 0, 0, 0.6) 58%,
-    rgba(0, 0, 0, 0.15) 82%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.15) 80%,
     rgba(0, 0, 0, 0) 100%
   );
+  transition: -webkit-mask-image 0.4s ease, mask-image 0.4s ease;
 
   /* Subtle white wash overlay for smooth pure white dissolve */
   &::after {
@@ -159,11 +160,54 @@
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 28%,
-      rgba(255, 255, 255, 0.45) 54%,
-      rgba(255, 255, 255, 0.85) 78%,
+      rgba(255, 255, 255, 0) 24%,
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0.88) 75%,
       #ffffff 100%
     );
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  // Footer is hidden while card is faded into white
+  .site-card-footer {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+}
+
+/* ─── Uncovered / Expanded State ─────────────────────────────────── */
+
+.sites-section.is-expanded {
+  .site-card-fade {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+
+    &::after {
+      opacity: 0 !important;
+      visibility: hidden;
+    }
+
+    .site-card-footer {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+  }
+
+  .sites-cta-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes siteCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -225,7 +269,7 @@
   }
 
   &:hover {
-    background: #20231f;
+    background: #369c73;
     color: #ffffff;
 
     .site-card-arrow {
@@ -264,7 +308,8 @@
   }
 
   &:hover {
-    background: #20231f;
+    background: #369c73;
+    border-color: #369c73;
     color: #ffffff;
 
     .sites-cta-arrow {
@@ -316,6 +361,77 @@
     grid-column: 2 / 3;
     grid-row: 4;
   }
+
+  .site-card-5,
+  .site-card-6 {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 960px) {
+  // Tablet: cards 3 & 4 fade out at bottom in collapsed state
+  .site-card-4 {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 28%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.15) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 28%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.15) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 24%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.88) 75%,
+        #ffffff 100%
+      );
+      transition: opacity 0.35s ease;
+    }
+
+    .site-card-footer {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+  }
+
+  .sites-section.is-expanded {
+    .site-card-4 {
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+
+      &::after {
+        display: none !important;
+      }
+
+      .site-card-footer {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    .site-card-5,
+    .site-card-6 {
+      display: block !important;
+      animation: siteCardFadeIn 0.35s ease forwards;
+    }
+  }
 }
 
 @media (max-width: 640px) {
@@ -337,6 +453,77 @@
     grid-column: 1;
     grid-row: auto;
     aspect-ratio: 4 / 3;
+  }
+
+  // Mobile collapsed: show cards 1, 2, 3 in full, card 4 fading into white at bottom
+  .site-card-4 {
+    display: block;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 28%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.15) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 28%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.15) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 24%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.88) 75%,
+        #ffffff 100%
+      );
+      transition: opacity 0.35s ease;
+    }
+
+    .site-card-footer {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+  }
+
+  // Cards 5 and 6 covered / hidden until Explore More is clicked
+  .site-card-5,
+  .site-card-6 {
+    display: none;
+  }
+
+  .sites-section.is-expanded {
+    .site-card-4 {
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+
+      &::after {
+        display: none !important;
+      }
+
+      .site-card-footer {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    .site-card-5,
+    .site-card-6 {
+      display: block !important;
+      animation: siteCardFadeIn 0.35s ease forwards;
+    }
   }
 
   .site-card-footer {

@@ -1,3 +1,6 @@
+﻿import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap'
 import './scss/main.scss'
 import hero1 from './assets/images/hero/hero1.png'
 import hero2 from './assets/images/hero/hero2.png'
@@ -26,49 +29,84 @@ import dp8 from './assets/images/feedbck/dp8.jpg'
 import logoFooter from './assets/logo-footer.png'
 
 document.querySelector('#app').innerHTML = `
+  <header class="site-header d-grid align-items-center w-100">
+    <a class="brand d-inline-flex align-items-center" href="#home" aria-label="Shirohana Villas home">
+      <img src="${logo}" alt="Shirohana Villas" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Dimmed backdrop overlay for mobile side drawer -->
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="primary-navigation d-flex align-items-center" id="primary-navigation" aria-label="Main navigation">
+      <!-- Side drawer header with logo & close button (mobile only) -->
+      <div class="drawer-header">
+        <a class="drawer-brand" href="#home" aria-label="Shirohana Villas home">
+          <img src="${logo}" alt="Shirohana Villas" />
+        </a>
+        <button class="drawer-close-btn" type="button" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2.5 2.5L13.5 13.5M2.5 13.5L13.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Branches Dropdown Component -->
+        <div class="nav-dropdown" id="branches-dropdown">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Toggle Branches menu">
+            <span>Our Branches</span>
+            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true">
+              <path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="nav-dropdown-menu" role="menu" aria-label="Our Branches">
+            <a class="nav-dropdown-item is-active" href="#branches" role="menuitem">Luna Lang - Benthota</a>
+            <a class="nav-dropdown-item" href="#branches" role="menuitem">Treasure Rock &ndash; Kurunagala</a>
+            <a class="nav-dropdown-item" href="#branches" role="menuitem">Villa Vista - Kelaniya</a>
+            <a class="nav-dropdown-item" href="#branches" role="menuitem">Saffron &amp; Blue - Nuwara Eliya</a>
+            <a class="nav-dropdown-item" href="#branches" role="menuitem">Boutique &lsquo;87 - Ella</a>
+            <a class="nav-dropdown-item" href="#branches" role="menuitem">SinhaGiri Mansion - Polonnaruwa</a>
+          </div>
+        </div>
+        <a href="#offers">Offers &amp; Packages</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#about">About Us</a>
+        <a class="nav-book-now" href="#booking" aria-label="Book your stay">
+          <span>Book Now</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <a class="header-booking" href="#booking" aria-label="Book your stay">
+      <span>Book Now</span>
+      <svg class="header-booking-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </header>
+
   <main>
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero position-relative overflow-hidden d-flex flex-column justify-content-end" aria-labelledby="hero-title">
       <!-- Background Slideshow -->
-      <div class="hero-slideshow" aria-hidden="true">
+      <div class="hero-slideshow position-absolute" aria-hidden="true">
         <div class="hero-slide is-active" style="background-image: url('${hero2}')"></div>
         <div class="hero-slide" style="background-image: url('${hero1}')"></div>
         <div class="hero-slide" style="background-image: url('${hero3}')"></div>
         <div class="hero-slide" style="background-image: url('${hero4}')"></div>
       </div>
 
-      <header class="site-header">
-        <a class="brand" href="#home" aria-label="Shirohana Villas home">
-          <img src="${logo}" alt="Shirohana Villas" />
-        </a>
-
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
-          <span></span><span></span>
-        </button>
-
-        <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
-          <a href="#branches">
-            <span>Our Branches</span>
-            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true">
-              <path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <a href="#offers">Offers &amp; Packages</a>
-          <a href="#blogs">Blogs</a>
-          <a href="#about">About Us</a>
-        </nav>
-
-        <a class="header-booking" href="#booking" aria-label="Book your stay">
-          <span>Book Now</span>
-          <svg class="header-booking-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </header>
-
-      <div class="hero-content" id="home">
+      <div class="hero-content d-flex flex-column align-items-start" id="home">
         <h1 id="hero-title">Make your stay<br />Calm and Peaceful</h1>
         <p class="hero-description">Immerse yourself in a serene eco-friendly villa experience crafted for mind and body.</p>
-        <a class="hero-explore-btn" href="#about" aria-label="Explore our villas">
+        <a class="hero-explore-btn d-inline-flex align-items-center justify-content-center" href="#about" aria-label="Explore our villas">
           <span>Explore More</span>
           <svg class="hero-explore-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
             <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,7 +115,7 @@ document.querySelector('#app').innerHTML = `
       </div>
 
       <!-- Slide Indicators -->
-      <div class="hero-indicators" role="tablist" aria-label="Hero slide controls">
+      <div class="hero-indicators d-flex align-items-center" role="tablist" aria-label="Hero slide controls">
         <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slide 1"></button>
         <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2"></button>
         <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3"></button>
@@ -85,7 +123,7 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
-    <section class="about-section" id="about" aria-labelledby="about-title">
+    <section class="about-section d-grid align-items-center justify-content-between" id="about" aria-labelledby="about-title">
       <div class="about-copy">
         <p class="section-eyebrow">About Us</p>
         <h2 id="about-title">Eight Curated Eco Luxury Escapes</h2>
@@ -93,33 +131,33 @@ document.querySelector('#app').innerHTML = `
         <p class="about-detail">Each property features distinct architecture, style, and curated experiences, defined by its sense of place, while delivering our signature comfort and serenity.</p>
       </div>
 
-      <div class="about-gallery" aria-label="A glimpse of Shirohana Villas">
+      <div class="about-gallery d-grid" aria-label="A glimpse of Shirohana Villas">
         <!-- Left column: Courtyard (tall) + Kitchen (wide) -->
-        <div class="about-gallery-col">
-          <div class="about-img-wrap about-img-tall">
+        <div class="about-gallery-col d-flex flex-column">
+          <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
             <img src="${aboutCourtyard}" alt="A peaceful courtyard framed by traditional villa wings and tropical greenery" />
           </div>
-          <div class="about-img-wrap about-img-wide">
+          <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
             <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
           </div>
         </div>
 
         <!-- Right column: Pool (wide) + Bedroom (tall) -->
-        <div class="about-gallery-col">
-          <div class="about-img-wrap about-img-wide">
+        <div class="about-gallery-col d-flex flex-column">
+          <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
             <img src="${aboutPool}" alt="A private plunge pool and daybed tucked into a lush tropical villa" />
           </div>
-          <div class="about-img-wrap about-img-tall">
+          <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
             <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="sites-section" id="branches" aria-labelledby="sites-title">
+    <section class="sites-section position-relative" id="branches" aria-labelledby="sites-title">
       <div class="sites-inner">
 
-        <div class="sites-grid">
+        <div class="sites-grid d-grid">
 
           <!-- Col 3, Row 1: Header -->
           <header class="sites-header">
@@ -220,19 +258,19 @@ document.querySelector('#app').innerHTML = `
         </div><!-- /.sites-grid -->
 
         <div class="sites-cta-wrap">
-          <a class="sites-cta-btn" href="#all-sites" aria-label="Explore all branches and sites">
-            Explore More <span class="sites-cta-arrow" aria-hidden="true">&#x2197;</span>
-          </a>
+          <button class="sites-cta-btn" type="button" id="sites-toggle-btn" aria-expanded="false" aria-label="Explore all branches and sites">
+            <span class="sites-cta-text">Explore More</span> <span class="sites-cta-arrow" aria-hidden="true">&#x2197;</span>
+          </button>
         </div>
 
       </div><!-- /.sites-inner -->
     </section>
 
-    <section class="offers-section" id="offers" aria-labelledby="offers-title">
-      <div class="offers-inner">
+    <section class="offers-section w-100 overflow-hidden" id="offers" aria-labelledby="offers-title">
+      <div class="offers-inner d-grid align-items-stretch w-100">
 
         <!-- Left: Copy wrap -->
-        <div class="offers-copy-wrap">
+        <div class="offers-copy-wrap d-flex align-items-center w-100">
           <div class="offers-copy">
             <p class="offers-eyebrow">Our Offers</p>
             <h2 id="offers-title">Offers and Packages</h2>
@@ -289,7 +327,7 @@ document.querySelector('#app').innerHTML = `
               </div>
             </div>
 
-            <div class="offers-cta">
+            <div class="offers-cta d-flex align-items-center justify-content-end w-100">
               <a class="offers-link-plain" href="#booking">Quick Booking</a>
               <a class="offers-link-outline" href="#offers-all" aria-label="Explore all offers and packages">
                 Explore More <span class="offers-arrow" aria-hidden="true">&#x2197;</span>
@@ -300,15 +338,15 @@ document.querySelector('#app').innerHTML = `
 
         <!-- Right: Image collage -->
         <div class="offers-image">
-          <img src="${offersPackages}" alt="A collage of Sri Lanka adventure packages — elephant safari, white water rafting, ATV riding, and outdoor camping" />
+          <img src="${offersPackages}" alt="A collage of Sri Lanka adventure packages Ã¢â‚¬â€ elephant safari, white water rafting, ATV riding, and outdoor camping" />
         </div>
 
       </div>
     </section>
 
-    <section class="feedback-section" id="feedbacks" aria-labelledby="feedback-title">
+    <section class="feedback-section position-relative" id="feedbacks" aria-labelledby="feedback-title">
       <div class="feedback-inner">
-        <div class="feedback-grid">
+        <div class="feedback-grid d-grid">
 
           <!-- Card 1 (Row 1, Col 1) -->
           <article class="feedback-card">
@@ -421,7 +459,7 @@ document.querySelector('#app').innerHTML = `
     </section>
   </main>
 
-  <footer class="site-footer" id="contacts">
+  <footer class="site-footer w-100" id="contacts">
     <div class="footer-inner">
       <div class="footer-logo-wrap">
         <a href="#home" aria-label="Shirohana Villas">
@@ -525,15 +563,123 @@ document.querySelector('#app').innerHTML = `
 
 const menuToggle = document.querySelector('.menu-toggle')
 const navigation = document.querySelector('.primary-navigation')
+const siteHeader = document.querySelector('.site-header')
+
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Sticky header scroll behaviour Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+const SCROLL_THRESHOLD = 60 // px before background kicks in
+
+let ticking = false
+const onScroll = () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      siteHeader.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD)
+      ticking = false
+    })
+    ticking = true
+  }
+}
+
+window.addEventListener('scroll', onScroll, { passive: true })
+// Run once on load in case page is already scrolled (e.g. browser refresh)
+onScroll()
+
+const navBackdrop = document.querySelector('#nav-backdrop')
+const drawerCloseBtn = document.querySelector('.drawer-close-btn')
+
+const closeMenu = () => {
+  menuToggle.setAttribute('aria-expanded', 'false')
+  menuToggle.setAttribute('aria-label', 'Open navigation')
+  navigation.classList.remove('is-open')
+  navBackdrop?.classList.remove('is-open')
+  document.body.style.overflow = ''
+}
+
+const openMenu = () => {
+  menuToggle.setAttribute('aria-expanded', 'true')
+  menuToggle.setAttribute('aria-label', 'Close navigation')
+  navigation.classList.add('is-open')
+  navBackdrop?.classList.add('is-open')
+  document.body.style.overflow = 'hidden'
+}
 
 menuToggle.addEventListener('click', () => {
   const isOpen = menuToggle.getAttribute('aria-expanded') === 'true'
-  menuToggle.setAttribute('aria-expanded', String(!isOpen))
-  menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation')
-  navigation.classList.toggle('is-open', !isOpen)
+  if (isOpen) {
+    closeMenu()
+  } else {
+    openMenu()
+  }
 })
 
-// ─── Hero Slideshow Controller ─────────────────────────────────────
+drawerCloseBtn?.addEventListener('click', closeMenu)
+navBackdrop?.addEventListener('click', closeMenu)
+
+// Close menu when clicking outside drawer
+document.addEventListener('click', (e) => {
+  if (
+    !navigation.contains(e.target) &&
+    !menuToggle.contains(e.target) &&
+    navigation.classList.contains('is-open')
+  ) {
+    closeMenu()
+  }
+})
+
+// Close drawer on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navigation.classList.contains('is-open')) {
+    closeMenu()
+  }
+})
+
+// Close drawer when any normal navigation link is clicked
+navigation.querySelectorAll('.drawer-body > a').forEach((link) => {
+  link.addEventListener('click', closeMenu)
+})
+
+// â”€â”€â”€ Branches Dropdown Controller â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const branchesDropdown = document.querySelector('#branches-dropdown')
+const branchesTrigger = branchesDropdown?.querySelector('.nav-dropdown-trigger')
+const dropdownItems = branchesDropdown?.querySelectorAll('.nav-dropdown-item')
+
+if (branchesDropdown && branchesTrigger) {
+  // Toggle on click / tap
+  branchesTrigger.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const isOpen = branchesDropdown.classList.toggle('is-open')
+    branchesTrigger.setAttribute('aria-expanded', String(isOpen))
+  })
+
+  // Select branch and close
+  dropdownItems?.forEach((item) => {
+    item.addEventListener('click', () => {
+      dropdownItems.forEach((el) => el.classList.remove('is-active'))
+      item.classList.add('is-active')
+      branchesDropdown.classList.remove('is-open')
+      branchesTrigger.setAttribute('aria-expanded', 'false')
+      closeMenu()
+    })
+  })
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!branchesDropdown.contains(e.target)) {
+      branchesDropdown.classList.remove('is-open')
+      branchesTrigger.setAttribute('aria-expanded', 'false')
+    }
+  })
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && branchesDropdown.classList.contains('is-open')) {
+      branchesDropdown.classList.remove('is-open')
+      branchesTrigger.setAttribute('aria-expanded', 'false')
+      branchesTrigger.focus()
+    }
+  })
+}
+
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Hero Slideshow Controller Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const heroSlides = document.querySelectorAll('.hero-slide')
 const heroDots = document.querySelectorAll('.hero-dot')
 

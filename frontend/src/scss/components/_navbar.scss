@@ -1,8 +1,8 @@
 @use '../variables' as *;
 
 .site-header {
-  position: absolute;
-  z-index: 10;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
   display: grid;
@@ -11,6 +11,20 @@
   align-items: center;
   padding: 26px max(clamp(24px, 6vw, 96px), calc((100% - 1440px) / 2));
   color: $color-white;
+  background: transparent;
+  transition:
+    background 0.35s ease,
+    backdrop-filter 0.35s ease,
+    padding 0.35s ease;
+
+  // State: user has scrolled — add a solid dark backdrop
+  &.is-scrolled {
+    background: rgba(18, 24, 20, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 }
 
 .brand {
@@ -30,11 +44,18 @@
   align-items: center;
   gap: clamp(20px, 2.8vw, 42px);
 
-  a {
+  .drawer-body {
+    display: contents;
+  }
+
+  // Consistent 13px font size across all nav items (links & dropdown trigger)
+  .drawer-body > a:not(.nav-book-now),
+  > a:not(.nav-book-now),
+  .nav-dropdown-trigger {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.92);
     text-decoration: none;
@@ -96,21 +117,49 @@
   }
 }
 
+// Elements hidden on desktop
 .menu-toggle {
   display: none;
 }
 
+.nav-backdrop {
+  display: none;
+}
+
+.drawer-header {
+  display: none;
+}
+
+.drawer-body {
+  display: contents;
+}
+
+.nav-book-now {
+  display: none;
+}
+
+// ─── Mobile Right Side Drawer ──────────────────────────────────────
 @media (max-width: 760px) {
   .site-header {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     gap: 16px;
     padding: 20px 22px;
+
+    &.is-scrolled {
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
   }
 
   .brand img {
     width: 126px;
   }
 
+  .header-booking {
+    display: none;
+  }
+
+  // Hamburger button
   .menu-toggle {
     display: flex;
     width: 42px;
@@ -118,49 +167,194 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    gap: 5px;
+    border: none;
+    outline: none;
     background: transparent;
     color: $color-white;
     cursor: pointer;
+    padding: 0;
 
     span {
       display: block;
-      width: 17px;
-      height: 1px;
+      width: 22px;
+      height: 1.5px;
       background: currentColor;
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+
+    &[aria-expanded='true'] span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    &[aria-expanded='true'] span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &[aria-expanded='true'] span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
     }
   }
 
-  .primary-navigation {
-    position: absolute;
-    top: 76px;
-    right: 22px;
-    left: 22px;
-    display: none;
-    align-items: stretch;
-    flex-direction: column;
-    gap: 0;
-    padding: 8px 20px;
-    background: rgba(25, 31, 27, 0.96);
-    backdrop-filter: blur(12px);
+  // Backdrop overlay
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.32s ease, visibility 0.32s ease;
 
     &.is-open {
-      display: flex;
-    }
-
-    a {
-      padding: 13px 0;
-      font-size: 13px;
+      opacity: 1;
+      visibility: visible;
     }
   }
 
-  .header-booking {
-    min-width: 104px;
-    height: 38px;
-    gap: 8px;
-    padding: 0 14px;
-    font-size: 11.5px;
+  // Right Side Drawer
+  .primary-navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(340px, 86vw);
+    height: 100vh;
+    height: 100svh;
+    background: #151d18;
+    z-index: 1050;
+    padding: 24px 22px 32px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.45);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+
+  // Drawer top bar with Logo + Close button
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+
+    .drawer-brand {
+      display: inline-flex;
+      align-items: center;
+
+      img {
+        display: block;
+        width: 120px;
+        height: auto;
+      }
+    }
+
+    .drawer-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 6px;
+      margin-right: -4px;
+      color: rgba(255, 255, 255, 0.88);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+
+      svg {
+        display: block;
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        background: transparent;
+        color: #ffffff;
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // Drawer links body
+  .drawer-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+
+    > a:not(.nav-book-now) {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      font-size: 13.5px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+
+    > a:not(.nav-book-now):last-of-type {
+      border-bottom: none;
+    }
+
+    .nav-book-now {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 14px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 2px;
+      color: $color-white;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      box-sizing: border-box;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+      svg {
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        background: $color-white;
+        color: #1a221e;
+        border-color: $color-white;
+
+        svg {
+          transform: translate(2px, -2px);
+        }
+      }
+    }
   }
 }
 
@@ -174,9 +368,9 @@
     width: 105px;
   }
 
-  .header-booking {
-    min-width: 90px;
-    padding: 0 10px;
+  .primary-navigation {
+    width: 90vw;
+    padding-inline: 18px;
   }
 
   .menu-toggle {
