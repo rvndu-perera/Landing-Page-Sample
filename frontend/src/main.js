@@ -68,6 +68,12 @@ document.querySelector('#app').innerHTML = `
       <div class="hero-content" id="home">
         <h1 id="hero-title">Make your stay<br />Calm and Peaceful</h1>
         <p class="hero-description">Immerse yourself in a serene eco-friendly villa experience crafted for mind and body.</p>
+        <a class="hero-explore-btn" href="#about" aria-label="Explore our villas">
+          <span>Explore More</span>
+          <svg class="hero-explore-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
 
       <!-- Slide Indicators -->
@@ -77,13 +83,6 @@ document.querySelector('#app').innerHTML = `
         <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3"></button>
         <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 4"></button>
       </div>
-
-      <a class="explore-link" href="#about" aria-label="Explore more below">
-        <span>Explore</span>
-        <svg class="explore-arrow" width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true">
-          <path d="M5 1V10M5 10L1.5 6.5M5 10L8.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
