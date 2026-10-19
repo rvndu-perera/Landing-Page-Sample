@@ -1,5 +1,8 @@
 import './scss/main.scss'
-import heroImage from './assets/images/hero/hero2.png'
+import hero1 from './assets/images/hero/hero1.png'
+import hero2 from './assets/images/hero/hero2.png'
+import hero3 from './assets/images/hero/hero3.png'
+import hero4 from './assets/images/hero/hero4.png'
 import logo from './assets/logo-nav.png'
 import aboutCourtyard from './assets/images/about/about3.jpg'
 import aboutPool from './assets/images/about/about2.jpg'
@@ -24,7 +27,15 @@ import logoFooter from './assets/logo-footer.png'
 
 document.querySelector('#app').innerHTML = `
   <main>
-    <section class="hero" aria-labelledby="hero-title" style="--hero-image: url('${heroImage}')">
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Background Slideshow -->
+      <div class="hero-slideshow" aria-hidden="true">
+        <div class="hero-slide is-active" style="background-image: url('${hero2}')"></div>
+        <div class="hero-slide" style="background-image: url('${hero1}')"></div>
+        <div class="hero-slide" style="background-image: url('${hero3}')"></div>
+        <div class="hero-slide" style="background-image: url('${hero4}')"></div>
+      </div>
+
       <header class="site-header">
         <a class="brand" href="#home" aria-label="Shirohana Villas home">
           <img src="${logo}" alt="Shirohana Villas" />
@@ -35,130 +46,184 @@ document.querySelector('#app').innerHTML = `
         </button>
 
         <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
-          <a href="#branches">Our Branches <span class="chevron" aria-hidden="true">⌄</span></a>
+          <a href="#branches">
+            <span>Our Branches</span>
+            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true">
+              <path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
           <a href="#offers">Offers &amp; Packages</a>
           <a href="#blogs">Blogs</a>
           <a href="#about">About Us</a>
         </nav>
 
-        <a class="header-booking" href="#booking">Book Now <span aria-hidden="true">↗</span></a>
+        <a class="header-booking" href="#booking" aria-label="Book your stay">
+          <span>Book Now</span>
+          <svg class="header-booking-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </header>
 
       <div class="hero-content" id="home">
-        <p class="hero-eyebrow">A slower kind of escape</p>
         <h1 id="hero-title">Make your stay<br />Calm and Peaceful</h1>
         <p class="hero-description">Immerse yourself in a serene eco-friendly villa experience crafted for mind and body.</p>
       </div>
 
-      <a class="explore-link" href="#about">Explore <span aria-hidden="true">↓</span></a>
+      <!-- Slide Indicators -->
+      <div class="hero-indicators" role="tablist" aria-label="Hero slide controls">
+        <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+      </div>
+
+      <a class="explore-link" href="#about" aria-label="Explore more below">
+        <span>Explore</span>
+        <svg class="explore-arrow" width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true">
+          <path d="M5 1V10M5 10L1.5 6.5M5 10L8.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="about-copy">
         <p class="section-eyebrow">About Us</p>
         <h2 id="about-title">Eight Curated Eco Luxury Escapes</h2>
-        <p class="about-intro">Isle &amp; Garden offers a collection of eight private eco-luxury escapes across Sri Lanka. Our portfolio spans the misty highlands of Haputale and Nuwara Eliya, the coastal soul of Kalpitiya, Koggala, Negombo, and Bentota; the historic landscape of Kandy; and the quiet wilderness of Kalawewa.</p>
+        <p class="about-intro">Isle &amp; Garden offers a collection of eight private eco-luxury escapes across Sri Lanka. Our portfolio spans the misty highlands of Haputale and Nuwara Eliya; the coastal soul of Kalpitiya, Kosgoda, Negombo, and Bentota; the historic landscape of Kirinda; and the quiet wilderness of Kaleliya.</p>
         <p class="about-detail">Each property features distinct architecture, style, and curated experiences, defined by its sense of place, while delivering our signature comfort and serenity.</p>
       </div>
 
       <div class="about-gallery" aria-label="A glimpse of Shirohana Villas">
-        <img class="about-gallery-main" src="${aboutCourtyard}" alt="A peaceful courtyard framed by traditional villa wings and tropical greenery" />
-        <img src="${aboutPool}" alt="A private plunge pool tucked into a lush tropical villa" />
-        <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
-        <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
+        <!-- Left column: Courtyard (tall) + Kitchen (wide) -->
+        <div class="about-gallery-col">
+          <div class="about-img-wrap about-img-tall">
+            <img src="${aboutCourtyard}" alt="A peaceful courtyard framed by traditional villa wings and tropical greenery" />
+          </div>
+          <div class="about-img-wrap about-img-wide">
+            <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
+          </div>
+        </div>
+
+        <!-- Right column: Pool (wide) + Bedroom (tall) -->
+        <div class="about-gallery-col">
+          <div class="about-img-wrap about-img-wide">
+            <img src="${aboutPool}" alt="A private plunge pool and daybed tucked into a lush tropical villa" />
+          </div>
+          <div class="about-img-wrap about-img-tall">
+            <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="sites-section" id="branches" aria-labelledby="sites-title">
       <div class="sites-inner">
 
-        <div class="sites-header">
-          <div class="sites-header-left">
-            <p class="section-eyebrow">Our Sites</p>
-          </div>
-          <h2 class="sites-heading" id="sites-title">Explore Our<br>Sites</h2>
-        </div>
-
         <div class="sites-grid">
 
-          <!-- Card 1 — tall left (spans rows 1–2) -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site1}" alt="Shirohana Kandy — a lakeside eco villa with private pool amid lush jungle" />
+          <!-- Col 3, Row 1: Header -->
+          <header class="sites-header">
+            <p class="section-eyebrow">Our Branches</p>
+            <h2 class="sites-heading" id="sites-title">Explore Our<br>Sites</h2>
+          </header>
+
+          <!-- Card 1: Col 1, Row 2 -->
+          <article class="site-card site-card-1">
+            <img class="site-card-img" src="${site1}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Kandy</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
-          <!-- Card 2 -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site2}" alt="Shirohana Kandy — garden plunge tub with mountain lake view at dusk" />
+          <!-- Card 2: Col 2, Row 1/3 (tall, starts at top alongside header) -->
+          <article class="site-card site-card-2">
+            <img class="site-card-img" src="${site2}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Kandy</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
-          <!-- Card 3 -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site3}" alt="Shirohana Haputale — hilltop villa with infinity pool overlooking misty valleys" />
+          <!-- Card 3: Col 3, Row 2 -->
+          <article class="site-card site-card-3">
+            <img class="site-card-img" src="${site3}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Haputale</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Haputale">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
-          <!-- Card 4 -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site4}" alt="Shirohana Kandy — traditional courtyard villa with carved columns" />
+          <!-- Card 4: Col 1, Row 3 (Bottom fade effect) -->
+          <article class="site-card site-card-fade site-card-4">
+            <img class="site-card-img" src="${site4}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Kandy</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kandy">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
-          <!-- Card 5 -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site5}" alt="Shirohana Kalawewa — jungle villa with Sigiriya Rock Fortress views" />
+          <!-- Card 5: Col 2, Row 3 (Bottom fade effect) -->
+          <article class="site-card site-card-fade site-card-5">
+            <img class="site-card-img" src="${site5}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Kalawewa</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Kalawewa">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
-          <!-- Card 6 — full-width panoramic strip -->
-          <article class="site-card">
-            <img class="site-card-img" src="${site6}" alt="Shirohana Negombo — open villa kitchen with tropical garden and pool" />
+          <!-- Card 6: Col 3, Row 3 (Bottom fade effect) -->
+          <article class="site-card site-card-fade site-card-6">
+            <img class="site-card-img" src="${site6}" alt="Eco Natural Villa, Colombo" />
             <div class="site-card-overlay" aria-hidden="true"></div>
             <div class="site-card-footer">
-              <span class="site-card-location">Negombo</span>
-              <a class="site-card-book" href="#booking" aria-label="Book a villa at Negombo">
-                Book a Villa <span class="site-card-arrow" aria-hidden="true">↗</span>
+              <div class="site-card-info">
+                <span class="site-card-location">Colombo,</span>
+                <span class="site-card-name">Eco Natural Villa</span>
+              </div>
+              <a class="site-card-btn" href="#view-info" aria-label="View info for Eco Natural Villa">
+                View Info <span class="site-card-arrow" aria-hidden="true">&#x2197;</span>
               </a>
             </div>
           </article>
 
         </div><!-- /.sites-grid -->
 
-        <div class="sites-load-more">
-          <button class="load-more-btn" type="button" id="sites-load-more" aria-label="Load more sites">
-            Load more <span class="load-more-icon" aria-hidden="true">↓</span>
-          </button>
+        <div class="sites-cta-wrap">
+          <a class="sites-cta-btn" href="#all-sites" aria-label="Explore all branches and sites">
+            Explore More <span class="sites-cta-arrow" aria-hidden="true">&#x2197;</span>
+          </a>
         </div>
 
       </div><!-- /.sites-inner -->
@@ -167,28 +232,70 @@ document.querySelector('#app').innerHTML = `
     <section class="offers-section" id="offers" aria-labelledby="offers-title">
       <div class="offers-inner">
 
-        <!-- Left: Copy -->
-        <div class="offers-copy">
-          <p class="section-eyebrow">Our Offers</p>
-          <h2 id="offers-title">Offers and Packages</h2>
-          <p class="offers-description">From scuba diving in Kalpitiya to Hiking in Haputale, our curated packages invite you to discover and fall in love with the beauty of Sri Lanka.</p>
+        <!-- Left: Copy wrap -->
+        <div class="offers-copy-wrap">
+          <div class="offers-copy">
+            <p class="offers-eyebrow">Our Offers</p>
+            <h2 id="offers-title">Offers and Packages</h2>
+            <p class="offers-description">From scuba diving in Kalpitiya to Hiking in Haputale, our curated packages invite you to discover and fall in love with the beauty of Sri Lanka.</p>
 
-          <div class="offers-activities" role="list">
-            <div class="offers-activity" role="listitem">Wild Life Safaris</div>
-            <div class="offers-activity" role="listitem">Outdoor Camping</div>
-            <div class="offers-activity" role="listitem">Rafting Adventures</div>
-            <div class="offers-activity" role="listitem">Scuba Diving</div>
-            <div class="offers-activity" role="listitem">ATV Rides</div>
-            <div class="offers-activity" role="listitem">River Boat Rides</div>
-            <div class="offers-activity" role="listitem">Jet Sky Rides</div>
-            <div class="offers-activity" role="listitem">Zip Lines</div>
-          </div>
+            <div class="offers-activities" role="list">
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Wild Life Safaris</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Outdoor Camping</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Rafting Adventures</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Scuba Diving</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>ATV Rides</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>River Boat Rides</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Jets key Rides</span>
+              </div>
+              <div class="offers-activity" role="listitem">
+                <svg class="offers-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1.5 1.5L5.5 5L1.5 8.5H3.8L7.8 5L3.8 1.5H1.5Z" fill="#32986e"/>
+                </svg>
+                <span>Zip Lines</span>
+              </div>
+            </div>
 
-          <div class="offers-cta">
-            <a class="offers-link-plain" href="#booking">Quick Booking</a>
-            <a class="offers-link-outline" href="#offers-all" aria-label="Explore all offers and packages">
-              Explore More <span class="offers-arrow" aria-hidden="true">↗</span>
-            </a>
+            <div class="offers-cta">
+              <a class="offers-link-plain" href="#booking">Quick Booking</a>
+              <a class="offers-link-outline" href="#offers-all" aria-label="Explore all offers and packages">
+                Explore More <span class="offers-arrow" aria-hidden="true">&#x2197;</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -426,3 +533,55 @@ menuToggle.addEventListener('click', () => {
   menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation')
   navigation.classList.toggle('is-open', !isOpen)
 })
+
+// ─── Hero Slideshow Controller ─────────────────────────────────────
+const heroSlides = document.querySelectorAll('.hero-slide')
+const heroDots = document.querySelectorAll('.hero-dot')
+
+if (heroSlides.length > 1) {
+  let currentSlideIndex = 0
+  let slideshowTimer = null
+  const SLIDE_DURATION = 5000 // 5 seconds per slide
+
+  const showSlide = (nextIndex) => {
+    heroSlides[currentSlideIndex].classList.remove('is-active')
+    if (heroDots[currentSlideIndex]) {
+      heroDots[currentSlideIndex].classList.remove('is-active')
+      heroDots[currentSlideIndex].setAttribute('aria-selected', 'false')
+    }
+
+    currentSlideIndex = nextIndex
+
+    heroSlides[currentSlideIndex].classList.add('is-active')
+    if (heroDots[currentSlideIndex]) {
+      heroDots[currentSlideIndex].classList.add('is-active')
+      heroDots[currentSlideIndex].setAttribute('aria-selected', 'true')
+    }
+  }
+
+  const advanceSlide = () => {
+    const nextIndex = (currentSlideIndex + 1) % heroSlides.length
+    showSlide(nextIndex)
+  }
+
+  const startSlideshow = () => {
+    stopSlideshow()
+    slideshowTimer = setInterval(advanceSlide, SLIDE_DURATION)
+  }
+
+  const stopSlideshow = () => {
+    if (slideshowTimer) {
+      clearInterval(slideshowTimer)
+      slideshowTimer = null
+    }
+  }
+
+  heroDots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      showSlide(idx)
+      startSlideshow() // reset timer on manual selection
+    })
+  })
+
+  startSlideshow()
+}
