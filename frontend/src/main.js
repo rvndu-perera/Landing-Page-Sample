@@ -12,6 +12,14 @@ import site4 from './assets/images/sites/site4.jpg'
 import site5 from './assets/images/sites/site5.jpg'
 import site6 from './assets/images/sites/site6.jpg'
 import offersPackages from './assets/images/offers/packages.png'
+import dp1 from './assets/images/feedbck/dp1.jpg'
+import dp2 from './assets/images/feedbck/dp2.jpg'
+import dp3 from './assets/images/feedbck/dp3.jpg'
+import dp4 from './assets/images/feedbck/dp4.jpg'
+import dp5 from './assets/images/feedbck/dp5.jpg'
+import dp6 from './assets/images/feedbck/dp6.jpg'
+import dp7 from './assets/images/feedbck/dp7.jpg'
+import dp8 from './assets/images/feedbck/dp8.jpg'
 
 document.querySelector('#app').innerHTML = `
   <main>
@@ -188,6 +196,120 @@ document.querySelector('#app').innerHTML = `
           <img src="${offersPackages}" alt="A collage of Sri Lanka adventure packages — elephant safari, white water rafting, ATV riding, and outdoor camping" />
         </div>
 
+      </div>
+    </section>
+
+    <section class="feedback-section" id="feedbacks" aria-labelledby="feedback-title">
+      <div class="feedback-inner">
+        <div class="feedback-grid">
+
+          <!-- Card 1 (Row 1, Col 1) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp1}" alt="Milli Mack" />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Milli Mack</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;We stayed at Villa Serenity for a week, and it exceeded every expectation. The ocean views from the terrace were breathtaking, and the private pool was pristine. The staff went above and beyond to make our family stay memorable. We're already planning our return!&rdquo;</p>
+          </article>
+
+          <!-- Card 2 (Row 1, Col 2) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp2}" alt="Elena R." />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Elena R.</span>
+                <span class="feedback-role">Germany</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;From the seamless check-in process to the personalized concierge service, every detail was handled flawlessly. Waking up to the sound of the waves and enjoying fresh breakfast prepared daily at the villa was pure luxury.&rdquo;</p>
+          </article>
+
+          <!-- Title Block (Row 1, Col 3) -->
+          <div class="feedback-title-card">
+            <div class="feedback-quote-icon" aria-hidden="true">
+              <svg width="46" height="38" viewBox="0 0 46 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 22.8C0 12.8 6.5 3.5 17.5 0L19.5 4.8C12.5 7.8 8.5 13.8 8.5 18.2H18.5V38H0V22.8ZM27.5 22.8C27.5 12.8 34 3.5 45 0L47 4.8C40 7.8 36 13.8 36 18.2H46V38H27.5V22.8Z" fill="#32835f"/>
+              </svg>
+            </div>
+            <h2 class="feedback-heading" id="feedback-title">Our Guests&rsquo;<br>Feedbacks</h2>
+          </div>
+
+          <!-- Card 3 (Row 2, Col 1) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp3}" alt="Sarath Jay" />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Sarath Jay</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;We booked a 5-bedroom villa for a milestone birthday with friends. The layout was spacious enough for everyone to have privacy while providing amazing common areas to cook, lounge, and celebrate together. Highly recommended!&rdquo;</p>
+          </article>
+
+          <!-- Card 4 (Row 2, Col 2) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp4}" alt="Sara Saf." />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Sara Saf.</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;The villa was fully equipped with top-tier amenities, comfortable beds, and a kitchen that had everything we needed. The interior design was elegant yet cozy. It really felt like staying in a private retreat.&rdquo;</p>
+          </article>
+
+          <!-- Card 5 (Row 2, Col 3) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp5}" alt="Davy Johns" />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Davy Johns</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;If you are looking for peace and quiet away from crowded resorts, this is the place. Nestled in the hills with panoramic views, we enjoyed total seclusion while still being only a 10-minute drive from the beach.&rdquo;</p>
+          </article>
+
+          <!-- Card 6 (Row 3, Col 1) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp6}" alt="St. John" />
+              <div class="feedback-author-info">
+                <span class="feedback-name">St. John</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;Traveling with toddlers can be stressful, but the villa team provided high chairs, baby gates, and pool safety measures beforehand. It allowed us to relax completely and enjoy our vacation together.&rdquo;</p>
+          </article>
+
+          <!-- Card 7 (Row 3, Col 2) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp7}" alt="Salina Wil." />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Salina Wil.</span>
+                <span class="feedback-role">CEO @Multilac</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;Photos usually look better than reality, but in this case, the villa was even more gorgeous in person. Five-star service, gorgeous architecture, and smooth booking from start to finish.&rdquo;</p>
+          </article>
+
+          <!-- Card 8 (Row 3, Col 3) -->
+          <article class="feedback-card">
+            <div class="feedback-card-header">
+              <img class="feedback-avatar" src="${dp8}" alt="Kenji N." />
+              <div class="feedback-author-info">
+                <span class="feedback-name">Kenji N.</span>
+                <span class="feedback-role">CEO @Codex</span>
+              </div>
+            </div>
+            <p class="feedback-quote">&ldquo;The high-speed Wi-Fi allowed me to handle remote work meetings seamlessly, while the serene outdoor lounge served as the best desk view I've ever had. A perfect balance of productivity and leisure!&rdquo;</p>
+          </article>
+
+        </div>
       </div>
     </section>
   </main>
