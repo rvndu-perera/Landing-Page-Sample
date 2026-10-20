@@ -58,8 +58,7 @@
 /* ─── Hero Content: Anchored Bottom-Left ──────────────────────────── */
 
 .hero-content {
-  width: min(100% - 2 * clamp(24px, 6vw, 96px), 1440px);
-  margin-inline: auto;
+  width: 100%;
   margin-top: auto;
   display: flex;
   flex-direction: column;

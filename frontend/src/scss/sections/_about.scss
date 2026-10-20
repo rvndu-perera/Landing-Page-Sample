@@ -3,14 +3,12 @@
 /* ─── About Section ──────────────────────────────────────────────── */
 
 .about-section {
-  display: grid;
-  width: min(100% - 2 * clamp(24px, 6vw, 96px), 1440px);
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(40px, 6vw, 90px);
-  margin-inline: auto;
   padding-block: clamp(76px, 9vw, 136px);
+}
+
+.about-row {
+  --bs-gutter-x: clamp(40px, 6vw, 90px);
+  --bs-gutter-y: 40px;
 }
 
 /* ─── Left: Copy ─────────────────────────────────────────────────── */
@@ -56,8 +54,8 @@
   gap: 10px;
   width: 100%;
   max-width: 530px;
-  aspect-ratio: 1.1 / 1;
-  justify-self: end;
+  aspect-ratio: 0.96 / 1;
+  margin-left: auto;
 }
 
 .about-gallery-col {
@@ -99,9 +97,9 @@
 /* ─── Responsive ─────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .about-section {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .about-row > * {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
   .about-copy {
@@ -110,16 +108,23 @@
 
   .about-gallery {
     max-width: 480px;
-    justify-self: start;
+    margin-left: 0;
     aspect-ratio: 1.1 / 1;
   }
 }
 
 @media (max-width: 540px) {
   .about-section {
-    width: calc(100% - 36px);
     padding-block: 60px 72px;
-    gap: 32px;
+  }
+
+  .about-section .page-container {
+    padding-inline: 18px;
+  }
+
+  .about-row {
+    --bs-gutter-x: 8px;
+    --bs-gutter-y: 32px;
   }
 
   .about-copy h2 {

@@ -9,11 +9,22 @@
 }
 
 .offers-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: stretch;
   min-height: 600px;
   width: 100%;
+}
+
+@media (min-width: 961px) {
+  .offers-inner > .offers-copy-wrap {
+    flex: 0 0 55%;
+    max-width: 55%;
+  }
+
+  .offers-inner > .offers-image {
+    flex: 0 0 45%;
+    max-width: 45%;
+    order: 6;
+  }
 }
 
 /* ─── Left: Copy Wrapper ─────────────────────────────────────────── */
@@ -187,14 +198,18 @@
 
 @media (max-width: 960px) {
   .offers-inner {
-    grid-template-columns: 1fr;
     min-height: auto;
+  }
+
+  .offers-inner > .offers-copy-wrap,
+  .offers-inner > .offers-image {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
   .offers-image {
     aspect-ratio: 16 / 10;
     min-height: auto;
-    order: -1;
   }
 
   .offers-copy-wrap {

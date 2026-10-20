@@ -79,7 +79,9 @@ Landing-Page-Sample/
 |---|---|
 | [Vite](https://vitejs.dev/) | Build tool and dev server |
 | [Sass / SCSS](https://sass-lang.com/) | Styling |
-| [Bootstrap 5](https://getbootstrap.com/) | Utility layout classes |
+| [Bootstrap 5](https://getbootstrap.com/) | Responsive grid and utility classes |
 | [Bootstrap Icons](https://icons.getbootstrap.com/) | Icon set |
 | [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) | Body typeface |
 | [Inria Serif](https://fonts.google.com/specimen/Inria+Serif) | Display / heading typeface |
+
+Bootstrap's containers, rows, columns, and utilities provide the responsive layout for the main content sections. Custom SCSS preserves the page's visual styling and handles bespoke layouts such as the villa-site masonry grid, hero slideshow, and navigation drawer.

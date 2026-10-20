@@ -8,16 +8,13 @@
 }
 
 .feedback-inner {
-  width: min(100% - 2 * clamp(24px, 5vw, 80px), 1360px);
   margin-inline: auto;
 }
 
-/* ─── 3x3 Grid (8 cards + 1 title block in row 1, col 3) ──────────── */
-
+/* ─── Bootstrap row for the 8 cards and title block ──────────────── */
 .feedback-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  --bs-gutter-x: 24px;
+  --bs-gutter-y: 24px;
 }
 
 /* ─── Title Card (Row 1, Column 3) ─────────────────────────────────── */
@@ -26,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px 20px 24px 28px;
+  padding: 16px 32px 24px 40px;
 }
 
 .feedback-quote-icon {
@@ -54,18 +51,32 @@
 /* ─── Feedback Cards ──────────────────────────────────────────────── */
 
 .feedback-card {
-  background: #ffffff;
+  position: relative;
+  isolation: isolate;
+  background: transparent;
   border-radius: 0;
-  padding: 28px 26px 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 28px 38px 30px;
   border: none;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0 12px;
+    content: '';
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.25s ease;
+  }
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+
+    &::before {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+    }
   }
 }
 
@@ -114,14 +125,15 @@
 /* ─── Responsive ─────────────────────────────────────────────────── */
 
 @media (max-width: 1024px) {
-  .feedback-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .feedback-grid > * {
+    width: 50%;
   }
 
   .feedback-title-card {
-    grid-column: 1 / -1;
+    flex: 0 0 100%;
+    max-width: 100%;
     order: -1;
-    padding: 0 0 16px 0;
+    padding: 0 12px 16px;
     flex-direction: row-reverse;
     align-items: flex-end;
     justify-content: space-between;
@@ -138,8 +150,12 @@
 
 @media (max-width: 640px) {
   .feedback-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    --bs-gutter-x: 0px;
+    --bs-gutter-y: 18px;
+  }
+
+  .feedback-grid > * {
+    width: 100%;
   }
 
   .feedback-title-card {
@@ -154,5 +170,13 @@
 
   .feedback-card {
     padding: 22px 20px 24px;
+
+    &::before {
+      inset: 0;
+    }
+  }
+
+  .feedback-title-card {
+    padding: 0 0 16px;
   }
 }

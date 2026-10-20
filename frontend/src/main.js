@@ -57,14 +57,14 @@ document.querySelector('#app').innerHTML = `
       <div class="drawer-body">
         <!-- Branches Dropdown Component -->
         <div class="nav-dropdown" id="branches-dropdown">
-          <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Toggle Branches menu">
+          <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-controls="branches-menu" aria-haspopup="true" aria-label="Toggle Branches menu">
             <span>Our Branches</span>
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true">
               <path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
 
-          <div class="nav-dropdown-menu" role="menu" aria-label="Our Branches">
+          <div class="nav-dropdown-menu" id="branches-menu" role="menu" aria-label="Our Branches">
             <a class="nav-dropdown-item is-active" href="#branches" role="menuitem">Luna Lang - Benthota</a>
             <a class="nav-dropdown-item" href="#branches" role="menuitem">Treasure Rock &ndash; Kurunagala</a>
             <a class="nav-dropdown-item" href="#branches" role="menuitem">Villa Vista - Kelaniya</a>
@@ -103,7 +103,7 @@ document.querySelector('#app').innerHTML = `
         <div class="hero-slide" style="background-image: url('${hero4}')"></div>
       </div>
 
-      <div class="hero-content d-flex flex-column align-items-start" id="home">
+      <div class="hero-content container-fluid page-container d-flex flex-column align-items-start" id="home">
         <h1 id="hero-title">Make your stay<br />Calm and Peaceful</h1>
         <p class="hero-description">Immerse yourself in a serene eco-friendly villa experience crafted for mind and body.</p>
         <a class="hero-explore-btn d-inline-flex align-items-center justify-content-center" href="#about" aria-label="Explore our villas">
@@ -123,39 +123,47 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
-    <section class="about-section d-grid align-items-center justify-content-between" id="about" aria-labelledby="about-title">
-      <div class="about-copy">
-        <p class="section-eyebrow">About Us</p>
-        <h2 id="about-title">Eight Curated Eco Luxury Escapes</h2>
-        <p class="about-intro">Isle &amp; Garden offers a collection of eight private eco-luxury escapes across Sri Lanka. Our portfolio spans the misty highlands of Haputale and Nuwara Eliya; the coastal soul of Kalpitiya, Kosgoda, Negombo, and Bentota; the historic landscape of Kirinda; and the quiet wilderness of Kaleliya.</p>
-        <p class="about-detail">Each property features distinct architecture, style, and curated experiences, defined by its sense of place, while delivering our signature comfort and serenity.</p>
-      </div>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="container-fluid page-container">
+        <div class="row align-items-center about-row">
+          <div class="col-md-6">
+            <div class="about-copy">
+              <p class="section-eyebrow">About Us</p>
+              <h2 id="about-title">Eight Curated Eco Luxury Escapes</h2>
+              <p class="about-intro">Isle &amp; Garden offers a collection of eight private eco-luxury escapes across Sri Lanka. Our portfolio spans the misty highlands of Haputale and Nuwara Eliya; the coastal soul of Kalpitiya, Kosgoda, Negombo, and Bentota; the historic landscape of Kirinda; and the quiet wilderness of Kaleliya.</p>
+              <p class="about-detail">Each property features distinct architecture, style, and curated experiences, defined by its sense of place, while delivering our signature comfort and serenity.</p>
+            </div>
+          </div>
 
-      <div class="about-gallery d-grid" aria-label="A glimpse of Shirohana Villas">
-        <!-- Left column: Courtyard (tall) + Kitchen (wide) -->
-        <div class="about-gallery-col d-flex flex-column">
-          <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
-            <img src="${aboutCourtyard}" alt="A peaceful courtyard framed by traditional villa wings and tropical greenery" />
-          </div>
-          <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
-            <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
-          </div>
-        </div>
+          <div class="col-md-6">
+            <div class="about-gallery d-grid" aria-label="A glimpse of Shirohana Villas">
+              <!-- Left column: Courtyard (tall) + Kitchen (wide) -->
+              <div class="about-gallery-col d-flex flex-column">
+                <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
+                  <img src="${aboutCourtyard}" alt="A peaceful courtyard framed by traditional villa wings and tropical greenery" />
+                </div>
+                <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
+                  <img src="${aboutKitchen}" alt="An open villa kitchen looking out to a tropical garden" />
+                </div>
+              </div>
 
-        <!-- Right column: Pool (wide) + Bedroom (tall) -->
-        <div class="about-gallery-col d-flex flex-column">
-          <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
-            <img src="${aboutPool}" alt="A private plunge pool and daybed tucked into a lush tropical villa" />
-          </div>
-          <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
-            <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
+              <!-- Right column: Pool (wide) + Bedroom (tall) -->
+              <div class="about-gallery-col d-flex flex-column">
+                <div class="about-img-wrap about-img-wide position-relative overflow-hidden">
+                  <img src="${aboutPool}" alt="A private plunge pool and daybed tucked into a lush tropical villa" />
+                </div>
+                <div class="about-img-wrap about-img-tall position-relative overflow-hidden">
+                  <img src="${aboutBedroom}" alt="A calm villa bedroom with views of Sri Lanka's green highlands" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="sites-section position-relative" id="branches" aria-labelledby="sites-title">
-      <div class="sites-inner">
+      <div class="sites-inner container-fluid page-container">
 
         <div class="sites-grid d-grid">
 
@@ -267,10 +275,10 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="offers-section w-100 overflow-hidden" id="offers" aria-labelledby="offers-title">
-      <div class="offers-inner d-grid align-items-stretch w-100">
+      <div class="offers-inner row g-0 align-items-stretch w-100">
 
         <!-- Left: Copy wrap -->
-        <div class="offers-copy-wrap d-flex align-items-center w-100">
+        <div class="offers-copy-wrap col-md-7 d-flex align-items-center">
           <div class="offers-copy">
             <p class="offers-eyebrow">Our Offers</p>
             <h2 id="offers-title">Offers and Packages</h2>
@@ -337,7 +345,7 @@ document.querySelector('#app').innerHTML = `
         </div>
 
         <!-- Right: Image collage -->
-        <div class="offers-image">
+        <div class="offers-image col-md-5 order-first order-md-last">
           <img src="${offersPackages}" alt="A collage of Sri Lanka adventure packages Ã¢â‚¬â€ elephant safari, white water rafting, ATV riding, and outdoor camping" />
         </div>
 
@@ -345,8 +353,8 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="feedback-section position-relative" id="feedbacks" aria-labelledby="feedback-title">
-      <div class="feedback-inner">
-        <div class="feedback-grid d-grid">
+      <div class="feedback-inner container-fluid wide-container">
+        <div class="feedback-grid row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
           <!-- Card 1 (Row 1, Col 1) -->
           <article class="feedback-card">
@@ -460,14 +468,14 @@ document.querySelector('#app').innerHTML = `
   </main>
 
   <footer class="site-footer w-100" id="contacts">
-    <div class="footer-inner">
+    <div class="footer-inner container-fluid wide-container">
       <div class="footer-logo-wrap">
         <a href="#home" aria-label="Shirohana Villas">
           <img class="footer-logo" src="${logoFooter}" alt="Shirohana Villas" />
         </a>
       </div>
 
-      <div class="footer-grid">
+      <div class="footer-grid row row-cols-1 row-cols-md-2 row-cols-lg-4">
         <!-- Col 1: Contact -->
         <div class="footer-col">
           <h3 class="footer-col-title">Contact</h3>
@@ -564,6 +572,20 @@ document.querySelector('#app').innerHTML = `
 const menuToggle = document.querySelector('.menu-toggle')
 const navigation = document.querySelector('.primary-navigation')
 const siteHeader = document.querySelector('.site-header')
+const branchesDropdown = document.querySelector('#branches-dropdown')
+const branchesTrigger = branchesDropdown?.querySelector('.nav-dropdown-trigger')
+const sitesSection = document.querySelector('.sites-section')
+const sitesToggleButton = document.querySelector('#sites-toggle-btn')
+
+const closeBranchesDropdown = () => {
+  branchesDropdown?.classList.remove('is-open')
+  branchesTrigger?.setAttribute('aria-expanded', 'false')
+}
+
+sitesToggleButton.addEventListener('click', () => {
+  const isExpanded = sitesSection.classList.toggle('is-expanded')
+  sitesToggleButton.setAttribute('aria-expanded', String(isExpanded))
+})
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Sticky header scroll behaviour Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const SCROLL_THRESHOLD = 60 // px before background kicks in
@@ -591,6 +613,7 @@ const closeMenu = () => {
   menuToggle.setAttribute('aria-label', 'Open navigation')
   navigation.classList.remove('is-open')
   navBackdrop?.classList.remove('is-open')
+  closeBranchesDropdown()
   document.body.style.overflow = ''
 }
 
@@ -628,7 +651,12 @@ document.addEventListener('click', (e) => {
 // Close drawer on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && navigation.classList.contains('is-open')) {
-    closeMenu()
+    if (branchesDropdown?.classList.contains('is-open')) {
+      closeBranchesDropdown()
+      branchesTrigger?.focus()
+    } else {
+      closeMenu()
+    }
   }
 })
 
@@ -638,8 +666,6 @@ navigation.querySelectorAll('.drawer-body > a').forEach((link) => {
 })
 
 // â”€â”€â”€ Branches Dropdown Controller â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-const branchesDropdown = document.querySelector('#branches-dropdown')
-const branchesTrigger = branchesDropdown?.querySelector('.nav-dropdown-trigger')
 const dropdownItems = branchesDropdown?.querySelectorAll('.nav-dropdown-item')
 
 if (branchesDropdown && branchesTrigger) {
@@ -655,8 +681,7 @@ if (branchesDropdown && branchesTrigger) {
     item.addEventListener('click', () => {
       dropdownItems.forEach((el) => el.classList.remove('is-active'))
       item.classList.add('is-active')
-      branchesDropdown.classList.remove('is-open')
-      branchesTrigger.setAttribute('aria-expanded', 'false')
+      closeBranchesDropdown()
       closeMenu()
     })
   })
@@ -664,16 +689,14 @@ if (branchesDropdown && branchesTrigger) {
   // Close when clicking outside
   document.addEventListener('click', (e) => {
     if (!branchesDropdown.contains(e.target)) {
-      branchesDropdown.classList.remove('is-open')
-      branchesTrigger.setAttribute('aria-expanded', 'false')
+      closeBranchesDropdown()
     }
   })
 
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && branchesDropdown.classList.contains('is-open')) {
-      branchesDropdown.classList.remove('is-open')
-      branchesTrigger.setAttribute('aria-expanded', 'false')
+      closeBranchesDropdown()
       branchesTrigger.focus()
     }
   })

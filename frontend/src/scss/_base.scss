@@ -32,6 +32,22 @@ body {
   background-color: #fff;
 }
 
+.page-container,
+.wide-container {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.page-container {
+  max-width: 1440px;
+  padding-inline: clamp(24px, 6vw, 96px);
+}
+
+.wide-container {
+  max-width: 1520px;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+
 button,
 a {
   font: inherit;
