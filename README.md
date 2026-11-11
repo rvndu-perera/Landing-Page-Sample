@@ -2,6 +2,10 @@
 
 A modern, responsive landing page for **Shirohana Villas**, a collection of eco-luxury villa stays across Sri Lanka. Built with Vite, vanilla HTML/JS, and SCSS.
 
+## Preview
+
+![Shirohana Villas landing page](./images/desktop-version.jpg)
+
 ---
 
 ## Prerequisites
@@ -55,6 +59,8 @@ All scripts are run from inside the `frontend/` directory.
 
 ```
 Landing-Page-Sample/
+├── images/
+│   └── desktop-version.jpg     # Landing page preview
 └── frontend/
     ├── public/
     │   └── favicon.png          # Site favicon
