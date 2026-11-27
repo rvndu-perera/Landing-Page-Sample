@@ -2,6 +2,8 @@
 
 A modern, responsive landing page for **Shirohana Villas**, a collection of eco-luxury villa stays across Sri Lanka. Built with Vite, vanilla HTML/JS, and SCSS.
 
+> 🌐 **Live Demo:** [https://your-site-name.netlify.app](https://your-site-name.netlify.app) <!-- Replace with your actual Netlify URL -->
+
 ## Preview
 
 ![Shirohana Villas landing page](./images/desktop-version.jpg)
@@ -55,14 +57,34 @@ All scripts are run from inside the `frontend/` directory.
 
 ---
 
+## Deployment (Netlify)
+
+This project includes a root `netlify.toml` file pre-configured for one-click deployment:
+
+- **Base directory:** `frontend`
+- **Build command:** `npm run build`
+- **Publish directory:** `dist` (resolves to `frontend/dist`)
+- **SPA Redirects:** Handled automatically via `netlify.toml` and `frontend/public/_redirects`
+
+### Steps to Deploy:
+1. Push your repository to GitHub / GitLab / Bitbucket.
+2. Sign in to [Netlify](https://app.netlify.com/) and click **Add new site** > **Import an existing project**.
+3. Choose your repository. Netlify will auto-detect the configuration settings from `netlify.toml`.
+4. Click **Deploy site**.
+5. Once your deployment succeeds, copy your generated URL (e.g., `https://<site-name>.netlify.app`) and update the [Live Demo](#shirohana-villas--landing-page) link above!
+
+---
+
 ## Project Structure
 
 ```
 Landing-Page-Sample/
+├── netlify.toml                # Netlify deployment configuration
 ├── images/
 │   └── desktop-version.jpg     # Landing page preview
 └── frontend/
     ├── public/
+    │   ├── _redirects          # Netlify SPA redirect rules
     │   └── favicon.png          # Site favicon
     ├── src/
     │   ├── assets/              # Images and logos

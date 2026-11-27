@@ -1,0 +1,13 @@
+[build]
+  # Base directory where frontend code lives
+  base = "frontend"
+  # Directory where Vite outputs the production build relative to the base directory
+  publish = "dist"
+  # Build command to compile the project
+  command = "npm run build"
+
+# SPA routing / client-side route fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
