@@ -2,7 +2,7 @@
 
 A modern, responsive landing page for **Shirohana Villas**, a collection of eco-luxury villa stays across Sri Lanka. Built with Vite, vanilla HTML/JS, and SCSS.
 
-> 🌐 **Live Demo:** [https://radiant-platypus-f14d0d.netlify.app/](https://your-site-name.netlify.app) <!-- Replace with your actual Netlify URL -->
+> 🌐 **Live Demo:** [https://radiant-platypus-f14d0d.netlify.app/](https://radiant-platypus-f14d0d.netlify.app/) <!-- Replace with your actual Netlify URL -->
 
 ## Preview
 
