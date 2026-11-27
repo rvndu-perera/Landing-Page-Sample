@@ -2,7 +2,7 @@
 
 A modern, responsive landing page for **Shirohana Villas**, a collection of eco-luxury villa stays across Sri Lanka. Built with Vite, vanilla HTML/JS, and SCSS.
 
-> 🌐 **Live Demo:** [https://your-site-name.netlify.app](https://your-site-name.netlify.app) <!-- Replace with your actual Netlify URL -->
+> 🌐 **Live Demo:** [https://radiant-platypus-f14d0d.netlify.app/](https://your-site-name.netlify.app) <!-- Replace with your actual Netlify URL -->
 
 ## Preview
 
@@ -49,11 +49,11 @@ The site will be available at **http://localhost:5173**
 
 All scripts are run from inside the `frontend/` directory.
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Starts the local dev server with hot reload |
-| `npm run build` | Builds the production bundle to `frontend/dist/` |
-| `npm run preview` | Previews the production build locally |
+| Command           | Description                                      |
+| ----------------- | ------------------------------------------------ |
+| `npm run dev`     | Starts the local dev server with hot reload      |
+| `npm run build`   | Builds the production bundle to `frontend/dist/` |
+| `npm run preview` | Previews the production build locally            |
 
 ---
 
@@ -67,6 +67,7 @@ This project includes a root `netlify.toml` file pre-configured for one-click de
 - **SPA Redirects:** Handled automatically via `netlify.toml` and `frontend/public/_redirects`
 
 ### Steps to Deploy:
+
 1. Push your repository to GitHub / GitLab / Bitbucket.
 2. Sign in to [Netlify](https://app.netlify.com/) and click **Add new site** > **Import an existing project**.
 3. Choose your repository. Netlify will auto-detect the configuration settings from `netlify.toml`.
@@ -103,13 +104,13 @@ Landing-Page-Sample/
 
 ## Tech Stack
 
-| Tool | Purpose |
-|---|---|
-| [Vite](https://vitejs.dev/) | Build tool and dev server |
-| [Sass / SCSS](https://sass-lang.com/) | Styling |
-| [Bootstrap 5](https://getbootstrap.com/) | Responsive grid and utility classes |
-| [Bootstrap Icons](https://icons.getbootstrap.com/) | Icon set |
-| [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) | Body typeface |
-| [Inria Serif](https://fonts.google.com/specimen/Inria+Serif) | Display / heading typeface |
+| Tool                                                                     | Purpose                             |
+| ------------------------------------------------------------------------ | ----------------------------------- |
+| [Vite](https://vitejs.dev/)                                              | Build tool and dev server           |
+| [Sass / SCSS](https://sass-lang.com/)                                    | Styling                             |
+| [Bootstrap 5](https://getbootstrap.com/)                                 | Responsive grid and utility classes |
+| [Bootstrap Icons](https://icons.getbootstrap.com/)                       | Icon set                            |
+| [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) | Body typeface                       |
+| [Inria Serif](https://fonts.google.com/specimen/Inria+Serif)             | Display / heading typeface          |
 
 Bootstrap's containers, rows, columns, and utilities provide the responsive layout for the main content sections. Custom SCSS preserves the page's visual styling and handles bespoke layouts such as the villa-site masonry grid, hero slideshow, and navigation drawer.
